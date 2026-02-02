@@ -71,19 +71,60 @@
 
         .controls {
             display: flex;
-            justify-content: center;
-            gap: 1rem;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
             margin-bottom: 3rem;
+        }
+
+        .filter-row {
+            display: flex;
+            gap: 1rem;
             flex-wrap: wrap;
+            justify-content: center;
         }
 
         .search-box {
             padding: 0.8rem 1.5rem;
             border-radius: 50px;
             border: 1px solid #ddd;
-            width: 300px;
+            width: 350px;
             outline: none;
             transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .category-select {
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            border: 1px solid #ddd;
+            background: #fff;
+            outline: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .sort-tabs {
+            display: flex;
+            background: #eee;
+            padding: 4px;
+            border-radius: 50px;
+            gap: 4px;
+        }
+
+        .sort-tab {
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .sort-tab.active {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            font-weight: 600;
         }
 
         .search-box:focus {
@@ -150,7 +191,7 @@
             background: #000;
             color: #fff;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 50px;
             font-size: 0.8rem;
             transition: opacity 0.3s;
         }
@@ -165,28 +206,227 @@
             font-style: italic;
             color: #ccc;
         }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: #fff;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            border-radius: 20px;
+            overflow-y: auto;
+            position: relative;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            line-height: 1;
+            color: #888;
+        }
+
+        .modal-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .modal-main-img {
+            width: 100%;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .modal-thumbs {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+            gap: 10px;
+        }
+
+        .modal-thumb {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .modal-thumb:hover {
+            border-color: var(--accent);
+        }
+
+        .modal-info h2 {
+            margin-top: 0;
+            font-weight: 300;
+            font-size: 2rem;
+        }
+
+        .modal-info .price {
+            font-size: 1.25rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .modal-info .desc {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+
+        .modal-info .specs {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+        }
+
+        .specs-row {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #eee;
+            padding: 8px 0;
+        }
+
+        .specs-row:last-child {
+            border-bottom: none;
+        }
+
+        .specs-label {
+            font-weight: 600;
+            color: #888;
+        }
+
+        /* Login Styles */
+        #login-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .login-box {
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .login-input {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 50px;
+            border: 1px solid #eee;
+            margin-bottom: 20px;
+            outline: none;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .login-btn {
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 12px 40px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .login-btn:hover {
+            opacity: 0.8;
+        }
     </style>
 </head>
 
 <body>
 
-    <div class="navbar">
-        <div class="logo">Mina Lidya</div>
-        <div>Zero Trust Protected 🔐</div>
+    <div id="login-overlay">
+        <div class="login-box">
+            <h2 style="font-weight: 300; margin-bottom: 30px;">Giriş Yapın</h2>
+            <input type="password" id="pass-input" class="login-input" placeholder="Parola">
+            <button onclick="checkLogin()" class="login-btn">Giriş</button>
+            <p id="login-error" style="color: red; font-size: 0.8rem; margin-top: 15px; display: none;">Hatalı parola!
+            </p>
+        </div>
     </div>
 
-    <div class="container">
-        <div class="header-section">
-            <h1>Katalog Yönetimi</h1>
-            <p>Tüm platformlardaki ürünlerin merkezi veritabanı.</p>
+    <div id="main-content" style="display:none;">
+        <div class="navbar">
+            <div class="logo">Mina Lidya</div>
+            <div>Database Access 🔐</div>
         </div>
 
-        <div class="controls">
-            <input type="text" id="search" class="search-box" placeholder="Ürün veya kategori ara...">
-        </div>
+        <div class="container">
+            <div class="header-section">
+                <h1>Katalog Yönetimi</h1>
+                <p>Tüm platformlardaki ürünlerin merkezi veritabanı.</p>
+            </div>
 
-        <div id="loader" class="loader">Ürünler Yükleniyor...</div>
-        <div id="grid" class="grid" style="display:none;"></div>
+            <div class="controls">
+                <div class="filter-row">
+                    <input type="text" id="search" class="search-box" placeholder="Ürün ara...">
+                    <select id="category-filter" class="category-select">
+                        <option value="all">Tüm Kategoriler</option>
+                    </select>
+                </div>
+                <div class="sort-tabs">
+                    <div class="sort-tab active" data-sort="newest">En Yeni</div>
+                    <div class="sort-tab" data-sort="oldest">En Eski</div>
+                    <div class="sort-tab" data-sort="price-low">Fiyat: Düşükten Yükseğe</div>
+                    <div class="sort-tab" data-sort="price-high">Fiyat: Yüksekten Düşüğe</div>
+                </div>
+            </div>
+
+            <div id="loader" class="loader">Ürünler Yükleniyor...</div>
+            <div id="grid" class="grid" style="display:none;"></div>
+        </div>
+    </div>
+
+    <div id="modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div id="modal-body-gallery" class="modal-gallery"></div>
+            <div id="modal-body-info" class="modal-info"></div>
+        </div>
     </div>
 
     <script>
@@ -194,9 +434,20 @@
 
         async function fetchProducts() {
             try {
-                const response = await fetch('/api/products');
+                const response = await fetch('/api/products', {
+                    headers: { 'x-api-key': 'minalidya_secure_2026' }
+                });
                 allProducts = await response.json();
-                renderProducts(allProducts);
+
+                // Populate categories
+                const categories = ['all', ...new Set(allProducts.map(p => p.category).filter(Boolean))];
+                const catFilter = document.getElementById('category-filter');
+                catFilter.innerHTML = categories.map(cat =>
+                    `<option value="${cat}">${cat === 'all' ? 'Tüm Kategoriler' : cat}</option>`
+                ).join('');
+
+                applyFiltersAndSort();
+
                 document.getElementById('loader').style.display = 'none';
                 document.getElementById('grid').style.display = 'grid';
             } catch (e) {
@@ -204,20 +455,138 @@
             }
         }
 
+        function applyFiltersAndSort() {
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+            const categoryTerm = document.getElementById('category-filter').value;
+            const sortType = document.querySelector('.sort-tab.active').dataset.sort;
+
+            let filtered = allProducts.filter(p => {
+                const matchesSearch = p.name.toLowerCase().includes(searchTerm) ||
+                    (p.description || '').toLowerCase().includes(searchTerm);
+                const matchesCategory = categoryTerm === 'all' || p.category === categoryTerm;
+                return matchesSearch && matchesCategory;
+            });
+
+            // Sorting Logic
+            if (sortType === 'newest') {
+                // Assuming sync order is newest first or use ID
+                filtered.sort((a, b) => (parseInt(b.id) || 0) - (parseInt(a.id) || 0));
+            } else if (sortType === 'oldest') {
+                filtered.sort((a, b) => (parseInt(a.id) || 0) - (parseInt(b.id) || 0));
+            } else if (sortType === 'price-low') {
+                filtered.sort((a, b) => parsePrice(a.price) - parsePrice(b.price));
+            } else if (sortType === 'price-high') {
+                filtered.sort((a, b) => parsePrice(b.price) - parsePrice(a.price));
+            }
+
+            renderProducts(filtered);
+        }
+
+        function parsePrice(priceStr) {
+            if (!priceStr) return 0;
+            // Remove non-numeric characters except for possible decimals
+            const num = parseFloat(priceStr.replace(/[^0-9.]/g, ''));
+            return isNaN(num) ? 0 : num;
+        }
+
+        function checkLogin() {
+            const pass = document.getElementById('pass-input').value;
+            if (pass === 'MinaLidya2026') {
+                document.getElementById('login-overlay').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+                fetchProducts();
+            } else {
+                document.getElementById('login-error').style.display = 'block';
+            }
+        }
+
+        // Handle Enter key
+        document.getElementById('pass-input').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') checkLogin();
+        });
+
+        // Event Listeners
+        document.getElementById('search').addEventListener('input', applyFiltersAndSort);
+        document.getElementById('category-filter').addEventListener('change', applyFiltersAndSort);
+
+        document.querySelectorAll('.sort-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.sort-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                applyFiltersAndSort();
+            });
+        });
+
         function renderProducts(items) {
             const grid = document.getElementById('grid');
             grid.innerHTML = items.map(item => `
             <div class="card">
-                <img src="${item.image || 'https://via.placeholder.com/300x450?text=Resim+Yok'}" class="card-img" alt="${item.name}">
+                <img src="${item.image || 'https://via.placeholder.com/300x450?text=Resim+Yok'}" class="card-img" alt="${item.name}" loading="lazy">
                 <div class="card-content">
                     <span class="card-tag">${item.category}</span>
                     <h3 class="card-title">${item.name}</h3>
                     <p class="card-price">${item.price}</p>
-                    <a href="#" class="btn-edit" onclick="alert('Duzenleme su an kapali. Keystatic uzerinden degisiklik yapiniz.')">Düzenle</a>
+                    
+                    <div class="card-specs" style="font-size: 0.75rem; color: #888; margin-top: 0.5rem; border-top: 1px solid #eee; padding-top: 0.5rem;">
+                        ${item.silhouette ? `<span>Kesim: ${item.silhouette}</span><br>` : ''}
+                        ${item.neckline ? `<span>Yaka: ${item.neckline}</span><br>` : ''}
+                        ${item.sleeve ? `<span>Kol: ${item.sleeve}</span><br>` : ''}
+                    </div>
+
+                    <a href="#" class="btn-edit" onclick="showDetails('${item.id}'); return false;">Detaylar</a>
                 </div>
             </div>
         `).join('');
         }
+
+        function showDetails(id) {
+            const product = allProducts.find(p => p.id == id);
+            if (!product) return;
+
+            const galleryHtml = `
+                <img src="${product.image}" class="modal-main-img" id="mainModalImg">
+                <div class="modal-thumbs">
+                    ${(product.gallery || []).map(img => `
+                        <img src="${img}" class="modal-thumb" onclick="document.getElementById('mainModalImg').src='${img}'">
+                    `).join('')}
+                </div>
+            `;
+
+            const attrs = product.mappedAttributes || {};
+            const infoHtml = `
+                <span class="card-tag">${product.category}</span>
+                <h2>${product.name}</h2>
+                <div class="price">${product.price}</div>
+                <div class="desc">${product.description || 'Açıklama bulunmuyor.'}</div>
+                <div class="specs">
+                    ${Object.entries(attrs).map(([k, v]) => v ? `
+                        <div class="specs-row">
+                            <span class="specs-label">${k}:</span>
+                            <span>${v}</span>
+                        </div>
+                    ` : '').join('')}
+                    <div class="specs-row"><span class="specs-label">Slug:</span><span>${product.slug}</span></div>
+                    <div class="specs-row"><span class="specs-label">ID:</span><span>${product.id}</span></div>
+                </div>
+                <div style="margin-top: 20px; font-size: 0.8rem; color: #aaa;">
+                    * Düzenleme için Keystatic panelini kullanınız.
+                </div>
+            `;
+
+            document.getElementById('modal-body-gallery').innerHTML = galleryHtml;
+            document.getElementById('modal-body-info').innerHTML = infoHtml;
+            document.getElementById('modal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        document.getElementById('modal').addEventListener('click', (e) => {
+            if (e.target.id === 'modal') closeModal();
+        });
 
         document.getElementById('search').addEventListener('input', (e) => {
             const term = e.target.value.toLowerCase();
@@ -227,8 +596,6 @@
             );
             renderProducts(filtered);
         });
-
-        fetchProducts();
     </script>
 
 </body>

@@ -2,6 +2,14 @@ name = "minalidya-product-api"
 main = "src/index.js"
 compatibility_date = "2024-01-01"
 
+[vars]
+API_SECRET = "minalidya_secure_2026"
+
+[[r2_buckets]]
+binding = "ASSETS_BUCKET"
+bucket_name = "minalidya-assets"
+
 [[rules]]
   type = "Text"
   globs = ["**/*.html"]
+  fallthrough = true

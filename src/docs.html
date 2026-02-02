@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mina Lidya API | Dokümantasyon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: #fafafa;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            color: #d4a373;
+            font-weight: 300;
+        }
+
+        code {
+            background: #eee;
+            padding: 0.2rem 0.5rem;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+
+        .endpoint {
+            background: #f9f9f9;
+            padding: 1rem;
+            border-left: 4px solid #d4a373;
+            margin: 1rem 0;
+        }
+
+        .method {
+            font-weight: 600;
+            color: #666;
+            margin-right: 0.5rem;
+        }
+
+        pre {
+            background: #333;
+            color: #fff;
+            padding: 1rem;
+            border-radius: 10px;
+            overflow-x: auto;
+        }
+
+        .warning {
+            background: #fff3cd;
+            padding: 10px;
+            border-left: 5px solid #ffa502;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Mina Lidya API Dökümantasyonu</h1>
+        <p>Bu API, Mina Lidya ürün kataloğunu ve görsel varlıklarını global olarak servis etmek için tasarlanmıştır.</p>
+
+        <div class="warning">
+            🔒 <strong>Güvenlik Uyarısı:</strong> Bu API'yi kullanmak için <code>x-api-key</code> başlığı göndermeniz
+            gerekmektedir.
+        </div>
+
+        <div class="endpoint">
+            <h3><span class="method">GET</span> /api/products</h3>
+            <p>157 Ürünün listesini ve R2 görsel linklerini döner.</p>
+            <p><strong>Gereksinim:</strong> Headers: <code>x-api-key: [Size Verilen Şifre]</code></p>
+        </div>
+
+        <h3>Örnek İstek (JavaScript):</h3>
+        <pre>
+fetch('https://minalidya-product-api.kanuysal.workers.dev/api/products', {
+  headers: {
+    'x-api-key': 'minalidya_secure_2026'
+  }
+})
+.then(res => res.json())
+.then(data => console.log(data));</pre>
+
+        <div class="endpoint">
+            <h3>CORS Desteği</h3>
+            <p>API tüm <code>Origin</code>'lerden gelen isteklere açıktır (<code>*</code>), ancak sadece doğru anahtarı
+                gönderenler veriyi alabilir.</p>
+        </div>
+
+        <p><a href="/admin">← Ürün Yönetim Paneli</a></p>
+    </div>
+</body>
+
+</html>
