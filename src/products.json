@@ -7,7 +7,7 @@
       "fr": "Sirène de pluie",
       "it": "Sirena della pioggia",
       "de": "Regen Sirena",
-      "es": "sirena de lluvia",
+      "es": "Yağmur Sirena",
       "ru": "Дождь Сирена",
       "nl": "YağMur Sirena"
     },
@@ -586,7 +586,7 @@
       "fr": "Robe de mariée Ayda",
       "it": "Abito da sposa Ayda",
       "de": "Ayda Hochzeitskleid",
-      "es": "Vestido de novia de Ayda",
+      "es": "Ayda Sirena",
       "ru": "Свадебное платье Айда",
       "nl": "Ayda Gelinlik"
     },
@@ -6764,7 +6764,7 @@
       "fr": "Robe de mariée Lina",
       "it": "Abito da sposa Lina",
       "de": "Lina Hochzeitskleid",
-      "es": "Vestido de novia de Lina",
+      "es": "Lina Sirena",
       "ru": "Лина Свадебное Платье",
       "nl": "Lina Gelinlik"
     },
@@ -15070,7 +15070,7 @@
       "fr": "Robe de mariée Yeliz",
       "it": "Abito da sposa Eliz",
       "de": "Yeliz Hochzeitskleid",
-      "es": "Vestido de novia de Yeliz",
+      "es": "Yeliz Sirena",
       "ru": "Свадебное платье Елиз",
       "nl": "Yeliz Gelinlik"
     },
@@ -27831,7 +27831,7 @@
     "uniqueStub": "15667-barcelona-gelinlik-beyaz-soz-elbisesi",
     "title": {
       "tr": "Barcelona Gelinlik Abiye",
-      "en": "Barcelona Wedding Dress Evening Dress",
+      "en": "Barcelona Mermaid",
       "fr": "Robe de mariée Barcelone Robe de soirée",
       "it": "Abito da sposa Barcellona Abito da sera",
       "de": "Barcelona Hochzeitskleid Abendkleid",
@@ -28026,7 +28026,7 @@
     "productName": "Mahide Gelinlik",
     "title": {
       "tr": "Mahide Gelinlik",
-      "en": "Mahide Wedding Dress",
+      "en": "Mahide Mermaid",
       "fr": "Robe de Mariée Mahide",
       "it": "Abito da Sposa Mahide",
       "de": "Mahide Hochzeitskleid",
